@@ -22,8 +22,14 @@ def train_model(args):
     Args:
         args: Command line arguments containing training parameters
     """
-    # Create visualization directory
+    # Create all necessary directories
+    os.makedirs(args.model_dir, exist_ok=True)
+    os.makedirs(args.log_dir, exist_ok=True)
     os.makedirs(args.viz_dir, exist_ok=True)
+    os.makedirs(os.path.join(args.data_dir, 'train', 'fire'), exist_ok=True)
+    os.makedirs(os.path.join(args.data_dir, 'train', 'no_fire'), exist_ok=True)
+    os.makedirs(os.path.join(args.data_dir, 'validation', 'fire'), exist_ok=True)
+    os.makedirs(os.path.join(args.data_dir, 'validation', 'no_fire'), exist_ok=True)
     
     # Initialize data loader
     data_loader = WildfireDataLoader(
@@ -47,7 +53,12 @@ def train_model(args):
     
     # Validate data directory
     if not data_loader.validate_data_directory():
-        print("Error: Invalid data directory structure")
+        print("Error: Invalid data directory structure or no images found")
+        print("Please add images to the following directories:")
+        print(f"  {args.data_dir}/train/fire/")
+        print(f"  {args.data_dir}/train/no_fire/")
+        print(f"  {args.data_dir}/validation/fire/")
+        print(f"  {args.data_dir}/validation/no_fire/")
         return
     
     # Get data generators
@@ -145,11 +156,6 @@ def main():
                       help='Whether to fine-tune the base model')
     
     args = parser.parse_args()
-    
-    # Create necessary directories
-    os.makedirs(args.model_dir, exist_ok=True)
-    os.makedirs(args.log_dir, exist_ok=True)
-    os.makedirs(args.viz_dir, exist_ok=True)
     
     # Train the model
     train_model(args)
