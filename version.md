@@ -35,9 +35,16 @@ data/
 - Single GPU training only
 - No distributed training support
 
+## Current State
+
+- Model is trained and validated on the provided dataset
+- Data verification tool is implemented but not extensively used
+- Visualizations are functional but could be improved
+- Dataset size is small, limiting potential for advanced model performance
+- Will be creating a new branch for expanded dataset training
+
 ## Next Steps
 
-1. Create branch for expanded dataset training
-2. Create branch for advanced data augmentation techniques
-3. Create branch for multi-GPU support
-4. Create branch for Raspberry Pi optimization
+- Create branch for expanded dataset training
+- Create branch for Raspberry Pi testing
+- Create branch for blynk integration
