@@ -4,7 +4,8 @@ An AI-powered system for detecting wildfires in images and video streams using d
 
 ## Project Overview
 
-This system uses computer vision and deep learning to detect the presence of wildfires in images and video streams. The project is implemented in three phases:
+This system uses computer vision and deep learning to detect the pr
+esence of wildfires in images and video streams. The project is implemented in three phases:
 
 1. **Phase 1:** Core AI/ML model for image-based fire detection
 2. **Phase 2:** Real-time webcam integration
